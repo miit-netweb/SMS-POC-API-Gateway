@@ -1,0 +1,36 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: currency-exchange
+          uri: lb://CURRENCY-EXCHANGE
+          predicates:
+            - Path=/exchange/**
+#          filters:
+#            - AuthenticationFilter
+#
+#
+#        - id: currency-converter
+#          uri: lb://CURRENCY-CONVERTER
+#          predicates:
+#            - Path=/conversion/**
+##          filters:
+##            - AuthenticationFilter
+
+        - id: Auth-Server
+          uri: lb://AUTH-SERVER
+          predicates:
+            - Path=/auth/**
+
+        - id: JWT-Server
+          uri: lb://JWT-SERVER
+          predicates:
+            - Path=/generate/**
+#comment
+  application:
+    name: API-GATEWAY
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
