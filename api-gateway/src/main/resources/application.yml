@@ -2,30 +2,20 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: currency-exchange
-          uri: lb://CURRENCY-EXCHANGE
+        - id: Enrollment-service
+          uri: lb://ENROLLMENT-SERVICE
           predicates:
-            - Path=/exchange/**
-#          filters:
-#            - AuthenticationFilter
-#
-#
-#        - id: currency-converter
-#          uri: lb://CURRENCY-CONVERTER
-#          predicates:
-#            - Path=/conversion/**
-##          filters:
-##            - AuthenticationFilter
+            - Path=/enroll/**
 
-        - id: Auth-Server
-          uri: lb://AUTH-SERVER
-          predicates:
-            - Path=/auth/**
-
-        - id: JWT-Server
-          uri: lb://JWT-SERVER
+        - id: Token-service
+          uri: lb://TOKEN-SERVICE
           predicates:
             - Path=/generate/**
+
+        - id: Partner-Service
+          uri: lb://PARTNER-SERVICE
+          predicates:
+            - Path=/partner/**
 #comment
   application:
     name: API-GATEWAY
