@@ -16,6 +16,11 @@ spring:
           uri: lb://PARTNER-SERVICE
           predicates:
             - Path=/partner/**
+            
+        - id: ThirdParty-Entity
+          uri: lb://THIRDPARTY-ENTITY
+          predicates:
+            - Path=/create/**
 #comment
   application:
     name: API-GATEWAY
